@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import axios from 'axios';
-
+import AddVehicle from "./AddVehicle";
 function VehicleList() {
     const [vehicles, setVehicles] = useState([]);
 
@@ -17,6 +17,7 @@ function VehicleList() {
     return (
         <div className="container mt-4">
             <h2 className="mb-4">Vehicle List</h2>
+            <AddVehicle></AddVehicle>
             <div className="row">
                 {vehicles.map(vehicle => (
                     <div className="col-md-4 mb-4" key={vehicle.id}>
