@@ -2,9 +2,14 @@ import { useState, useEffect } from "react";
 import axios from 'axios';
 import AddVehicle from "./AddVehicle";
 function VehicleList() {
-    const [vehicles, setVehicles] = useState([]);
 
+    const [vehicles, setVehicles] = useState([]);
+ 
     useEffect(() => {
+        fetchVehicles();
+        
+    }, []);
+    function fetchVehicles(){
         axios.get('http://localhost:5000/vehicles')
             .then(response => {
                 setVehicles(response.data);
@@ -12,12 +17,24 @@ function VehicleList() {
             .catch(error => {
                 console.log('There was an error fetching the vehicles data!', error);
             });
-    }, []);
+    }
+
+
+   
+    function handleDelete(id){
+        axios.delete(`http://localhost:5000/vehicles/${id}`)
+        .then(()=>{
+            fetchVehicles();
+        })
+        .catch(error=>{
+            console.log('There was an error deleting the vehicle data!',error);
+        })
+    }
 
     return (
         <div className="container mt-4">
             <h2 className="mb-4">Vehicle List</h2>
-            <AddVehicle></AddVehicle>
+            {/* <AddVehicle></AddVehicle> */}
             <div className="row">
                 {vehicles.map(vehicle => (
                     <div className="col-md-4 mb-4" key={vehicle.id}>
@@ -32,6 +49,7 @@ function VehicleList() {
                                 <p className="card-text">Fuel: {vehicle.fuel}</p>
                                 <p className="card-text">Gear: {vehicle.gear}</p>
                                 <p className="card-text">Description: {vehicle.description}</p>
+                                <button type="button" className="btn btn-danger" onClick={()=>handleDelete(vehicle.id)}>Delete</button>
                             </div>
                         </div>
                     </div>
@@ -39,6 +57,7 @@ function VehicleList() {
             </div>
         </div>
     );
+
 }
 
 export default VehicleList;

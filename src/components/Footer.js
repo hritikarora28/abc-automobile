@@ -10,6 +10,7 @@ function Footer(){
       <li className="nav-item"><Link to="/about" class="nav-link px-2 text-body-secondary">About Us</Link></li>
       <li className="nav-item"><Link to="/vehicleList" class="nav-link px-2 text-body-secondary">Vehicles</Link></li>
       <li className="nav-item"><Link to="/services" class="nav-link px-2 text-body-secondary">Servcies</Link></li>
+      <li className="nav-item"><Link to="/add-vehicle" class="nav-link px-2 text-body-secondary">Add Vehicle</Link></li>
       <li className="nav-item"><Link to="/contact" class="nav-link px-2 text-body-secondary">Contact US</Link></li>
     </ul>
     <div data-testid="footer-content">
