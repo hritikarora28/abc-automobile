@@ -1,3 +1,4 @@
+import ErrorBoundary from "./components/ErrorBoundary";
 import Menu from "./components/Menu";
 import About from "./components/About";
 import Footer from "./components/Footer";
@@ -51,9 +52,10 @@ import UpdateVehical from "./components/updateVehical";
 function App(){
   return(
     <>
-    
+   <ErrorBoundary>
     <Menu/>
     <Routes>
+    
     <Route path="/" element={<Home/>}/>
     <Route path="/about" element={<About/>}/>
     <Route path="/contact" element={<Contact/>}/>
@@ -61,9 +63,10 @@ function App(){
     <Route path="/services" element={<Servcies/>}/>
     <Route path="/update-vehical/:id" element={<UpdateVehical/>}/>
     <Route path="/add-vehicle" element={<AddVehicle/>}/>
-
+    
     </Routes>
     <Footer/>
+    </ErrorBoundary>
     </>
   )
 }
