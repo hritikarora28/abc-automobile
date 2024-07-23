@@ -56,7 +56,7 @@ function VehicleList() {
                                 <p className="card-text">Fuel: {vehicle.fuel}</p>
                                 <p className="card-text">Gear: {vehicle.gear}</p>
                                 <p className="card-text">Description: {vehicle.description}</p>
-                                <button type="button" className="btn btn-danger" onClick={()=>handleDelete(vehicle.id)}>Delete</button>
+                                <button type="button" className="btn btn-danger me-2" onClick={()=>handleDelete(vehicle.id)}>Delete</button>
                                 <button type="button" className="btn btn-primary" onClick={() => handleUpdate(vehicle.id)}>Update</button>
                             </div>
                         </div>
