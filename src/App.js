@@ -7,6 +7,7 @@ import Contact from "./components/Contact";
 import Servcies from "./components/Services";
 import VehicleList from "./components/Vehiclelist";
 import AddVehicle from "./components/AddVehicle";
+import UpdateVehical from "./components/updateVehical";
 
 // create reach app
 // npx create-react-app abc automobiles
@@ -56,8 +57,9 @@ function App(){
     <Route path="/" element={<Home/>}/>
     <Route path="/about" element={<About/>}/>
     <Route path="/contact" element={<Contact/>}/>
-    <Route path="/vehicleList" element={<VehicleList/>}/> *
+    <Route path="/vehicleList" element={<VehicleList/>}/> 
     <Route path="/services" element={<Servcies/>}/>
+    <Route path="/update-vehical/:id" element={<UpdateVehical/>}/>
     <Route path="/add-vehicle" element={<AddVehicle/>}/>
 
     </Routes>

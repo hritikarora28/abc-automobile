@@ -1,19 +1,18 @@
 {
   "vehicles": [
     {
-      "id": "2",
       "image": "https://images.pexels.com/photos/93652/pexels-photo-93652.jpeg?auto=compress&cs=tinysrgb&w=600",
       "name": "Jaguar",
-      "price": 30000,
-      "mileage": 13000,
+      "price": 2996,
+      "mileage": 119997,
       "color": "Black",
-      "seats": 5,
+      "seats": 4,
       "fuel": "Petrol",
       "gear": "Automatic",
-      "description": "A Good Car"
+      "description": "A Good Car",
+      "id": "2"
     },
     {
-      "id": "3",
       "image": "https://images.pexels.com/photos/112460/pexels-photo-112460.jpeg?auto=compress&cs=tinysrgb&w=600",
       "name": "Mercdes Benz",
       "price": 40000,
@@ -22,7 +21,8 @@
       "seats": 5,
       "fuel": "Petrol",
       "gear": "Automatic",
-      "description": "A reliable family car"
+      "description": "A reliable family car",
+      "id": "3"
     },
     {
       "id": "4",

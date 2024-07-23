@@ -1,48 +1,54 @@
 import { useFormik} from 'formik';
 import * as Yup from 'yup';
 import axios from 'axios';
+import {useNavigate,useParams} from 'react-router-dom'
+import { useState,useEffect } from 'react';
 
-
-
-
-function AddVehicle(){
-    const formik = useFormik(
-        {
-            initialValues: {
-                image:'',
-                name:'',
-                price:'',
-                mileage:'',
-                color:'',
-                seats:'',
-                fuel:'',
-                gear:'',
-                description:''
-            },
-            validationSchema: Yup.object({
-                image: Yup.string().required('Image URL is required'),
-                name: Yup.string().min(5,'Name must be at least 5 characters').required('Name is required'),
-                price: Yup.number().min(1,'Price must be greater than 0').required('Price is required'),
-                mileage: Yup.number().min(1,'Mileage must be greater than 0').required('Mileage is required'),
-                seats: Yup.number().min(1,'Seats must be greater than 0').max(6,'Seats must be less than 7').required('Seats is required'),
-            })
-            ,
-            onSubmit:(values , {setSubmitting, resetForm , setStatus})=> {
-                axios.post('http://localhost:5000/vehicles',values)
-                    .then(response => {
-                        setStatus('success');
-                        resetForm();
-                    })
-                    .catch(error => {
-                        setStatus('error');
-                    })
-                    .finally(()=>{
-                        setSubmitting(false);
-                    });
-            },
+function UpdateVehical(){
+    const { id } = useParams();
+    const navigate = useNavigate();
+    const [vehicle, setVehicle] = useState(null);
+    useEffect(() => {
+      axios.get(`http://localhost:5000/vehicles/${id}`)
+        .then(response => {
+          setVehicle(response.data);
+        })
+        .catch(error => {
+          console.log('There was an error fetching the vehicle data!', error);
         });
+    }, [id]);
 
 
+const formik = useFormik({
+    initialValues: {
+        image: vehicle?.image || '',
+        name: vehicle?.name || '',
+        price: vehicle?.price || '',
+        mileage: vehicle?.mileage || '',
+        color: vehicle?.color || '',
+        seats: vehicle?.seats || '',
+        fuel: vehicle?.fuel || '',
+        gear: vehicle?.gear || '',
+        description: vehicle?.description || ''
+    },
+    enableReinitialize: true,
+   
+    
+    onSubmit: (values, { setSubmitting, setStatus, resetForm }) => {
+        axios.put(`http://localhost:5000/vehicles/${id}`, values)
+            .then(response => {
+                setStatus('success');
+                resetForm();
+                navigate('/vehicleList');
+            })
+            .catch(error => {
+                setStatus('error');
+            })
+            .finally(() => {
+                setSubmitting(false);
+            });
+    }
+});
 
 
     return (
@@ -305,6 +311,5 @@ function AddVehicle(){
         </div>
     )
 }
-
-
-export default AddVehicle;
+    
+export default UpdateVehical;

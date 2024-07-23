@@ -1,9 +1,12 @@
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import axios from 'axios';
 import AddVehicle from "./AddVehicle";
+
 function VehicleList() {
 
     const [vehicles, setVehicles] = useState([]);
+    const navigate = useNavigate();
  
     useEffect(() => {
         fetchVehicles();
@@ -30,6 +33,10 @@ function VehicleList() {
             console.log('There was an error deleting the vehicle data!',error);
         })
     }
+    function handleUpdate(id) {
+        navigate(`/update-vehical/${id}`);
+    }
+
 
     return (
         <div className="container mt-4">
@@ -50,6 +57,7 @@ function VehicleList() {
                                 <p className="card-text">Gear: {vehicle.gear}</p>
                                 <p className="card-text">Description: {vehicle.description}</p>
                                 <button type="button" className="btn btn-danger" onClick={()=>handleDelete(vehicle.id)}>Delete</button>
+                                <button type="button" className="btn btn-primary" onClick={() => handleUpdate(vehicle.id)}>Update</button>
                             </div>
                         </div>
                     </div>
