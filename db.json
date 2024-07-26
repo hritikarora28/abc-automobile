@@ -49,8 +49,7 @@
       "description": "A reliable family SUV"
     },
     {
-      "id": "5eb7",
-      "image": "https://images.pexels.com/photos/170811/pexels-photo-170811.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+      "image": "https://images.pexels.com/photos/170811/pexels-photo-170811.jpeg",
       "name": "BMW Model 1",
       "price": 400000,
       "mileage": 9,
@@ -58,7 +57,26 @@
       "seats": 2,
       "fuel": "Petrol",
       "gear": "4",
-      "description": "A new Model of BMW with more comfort"
+      "description": "A new Model of BMW with more comfort",
+      "id": "5eb7"
+    }
+  ],
+  "user": [
+    {
+      "username": "admin",
+      "password": "admin@123",
+      "role": "admin"
+    },
+    {
+      "username": "user1",
+      "password": "user@123",
+      "role": "user"
+    },
+    {
+      "id": "35c6",
+      "username": "admin2",
+      "password": "admin@1234",
+      "role": "admin"
     }
   ]
 }

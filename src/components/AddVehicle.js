@@ -17,7 +17,9 @@ function AddVehicle(){
                 seats:'',
                 fuel:'',
                 gear:'',
-                description:''
+                description:'',
+                
+
             },
             validationSchema: Yup.object({
                 image: Yup.string().required('Image URL is required'),
@@ -25,6 +27,7 @@ function AddVehicle(){
                 price: Yup.number().min(1,'Price must be greater than 0').required('Price is required'),
                 mileage: Yup.number().min(1,'Mileage must be greater than 0').required('Mileage is required'),
                 seats: Yup.number().min(1,'Seats must be greater than 0').max(6,'Seats must be less than 7').required('Seats is required'),
+                
             })
             ,
             onSubmit:(values , {setSubmitting, resetForm , setStatus})=> {
@@ -272,6 +275,7 @@ function AddVehicle(){
 
                     }  
                 </div>
+
 
 
 
