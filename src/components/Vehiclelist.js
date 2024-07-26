@@ -1,12 +1,15 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext} from "react";
 import { useNavigate } from "react-router-dom";
 import axios from 'axios';
 import AddVehicle from "./AddVehicle";
+import { AuthContext } from "./Context/AutContext";
 
 function VehicleList() {
 
     const [vehicles, setVehicles] = useState([]);
     const navigate = useNavigate();
+    const { user, logout } = useContext(AuthContext);
+
  
     useEffect(() => {
         fetchVehicles();
@@ -56,8 +59,13 @@ function VehicleList() {
                                 <p className="card-text">Fuel: {vehicle.fuel}</p>
                                 <p className="card-text">Gear: {vehicle.gear}</p>
                                 <p className="card-text">Description: {vehicle.description}</p>
+                                {user?.role === 'admin' && (
                                 <button type="button" className="btn btn-danger me-2" onClick={()=>handleDelete(vehicle.id)}>Delete</button>
+                                    )}
+                                                                    {user?.role === 'admin' && (
+
                                 <button type="button" className="btn btn-primary" onClick={() => handleUpdate(vehicle.id)}>Update</button>
+                                                                    )}
                             </div>
                         </div>
                     </div>
