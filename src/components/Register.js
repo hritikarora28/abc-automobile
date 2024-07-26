@@ -23,7 +23,8 @@ const Register = () => {
                 .required('Required'),
         }),
         onSubmit: (values, { setSubmitting, resetForm, setStatus }) => {
-            axios.post('http://localhost:5000/user', {
+            
+                axios.post('http://localhost:5000/user', {
                 username: values.username,
                 password: values.password,
                 role: values.role,

@@ -115,6 +115,12 @@
       "username": "user 4",
       "password": "123",
       "role": "admin"
+    },
+    {
+      "id": "bda7",
+      "username": "hritik",
+      "password": "12345678",
+      "role": "user"
     }
   ]
 }
